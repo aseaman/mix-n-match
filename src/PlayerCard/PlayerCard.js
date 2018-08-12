@@ -44,13 +44,24 @@ class PlayerCard extends Component {
 					<div className='card-content'>
 						{this.props.recipe.ingredients.map(ingredient => {
 							return (
-								<div className='board-item'>
+								<div className='board-item' key={ `${this.props.ingredient}-${ingredient.ingredient}` }>
 									<div className={this.getShadingClass(ingredient.amount)}>
 										<span>{ingredient.ingredient}</span>
 									</div>
 								</div>
 							);
 						})}
+					</div>
+					<div className='card-footer'>
+						<a className='is-danger card-footer-item' onClick={e => this.props.onDeleteCard(this.props.id, e)}>
+							<span className='icon is-medium'>
+								<i className='fas fa-skull'></i>
+							</span>
+							Sounds Gross!
+							<span className='icon is-medium'>
+								<i className='fas fa-skull'></i>
+							</span>
+						</a>
 					</div>
 				</article>
 			</div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { buildRecipe } from './recipe-builder';
 import PlayerCard from './PlayerCard/PlayerCard';
+import firebase from './firebase';
 import './App.css';
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
 		}
 		this.changeName = this.changeName.bind(this);
 		this.createRecipe = this.createRecipe.bind(this);
+		this.onDeleteCard = this.onDeleteCard.bind(this);
 	}
 
 	changeName(event) {
@@ -30,10 +32,37 @@ class App extends Component {
 			name: this.state.name,
 			recipe: buildRecipe()
 		};
-		this.setState({
-			name: '',
-			players: this.state.players.concat([player])
-		});
+
+		const playersRef = firebase.database().ref('players');
+		playersRef.push(player);
+		this.setState({ name: '' });
+	}
+
+	onDeleteCard(id) {
+		const playerRef = firebase.database().ref(`/players/${id}`);
+		if (playerRef) {
+			playerRef.remove();
+		}
+	}
+
+	componentDidMount() {
+		const playersRef = firebase.database().ref('players');
+		playersRef.on('value', snapshot => {
+			let players = snapshot.val();
+			let newState = [];
+			for (let playerId in players) {
+				newState.push({
+					id: playerId,
+					locked: players[playerId].locked,
+					name: players[playerId].name,
+					recipe: players[playerId].recipe
+				});
+			}
+
+			this.setState({
+				players: newState
+			})
+		})
 	}
 
 	render() {
@@ -69,7 +98,9 @@ class App extends Component {
 					<div className='columns is-desktop is-centered'>
 						{this.state.players.map((player, index) => {
 							return (<PlayerCard
+								id={player.id}
 								key={index}
+								onDeleteCard={this.onDeleteCard}
 								name={player.name}
 								recipe={player.recipe}
 							/>)
