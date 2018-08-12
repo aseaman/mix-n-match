@@ -92,7 +92,7 @@ class App extends Component {
 					</div>
 				</section>
 				<section className='container card-container'>
-					<div className='columns is-desktop is-centered'>
+					<div className='columns is-desktop is-multiline is-centered'>
 						{this.state.players.map((player, index) => {
 							return (<PlayerCard
 								id={player.id}
