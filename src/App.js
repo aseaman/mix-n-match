@@ -30,7 +30,8 @@ class App extends Component {
 		const player = {
 			locked: true,
 			name: this.state.name,
-			recipe: buildRecipe()
+			recipe: buildRecipe(),
+			solved: false
 		};
 
 		const playersRef = firebase.database().ref('players');
@@ -55,7 +56,8 @@ class App extends Component {
 					id: playerId,
 					locked: players[playerId].locked,
 					name: players[playerId].name,
-					recipe: players[playerId].recipe
+					recipe: players[playerId].recipe,
+					solved: players[playerId].solved
 				});
 			}
 
@@ -68,15 +70,10 @@ class App extends Component {
 	render() {
 		return (
 			<div className='app'>
-				<nav className='navbar has-shadow'>
-					<div className='navbar-brand'>
-						<span className='navbar-item'>Cool Logo Here</span>
-					</div>
-				</nav>
-				<section className='hero is-info'>
+				<section className='hero'>
 					<div className='hero-body'>
 						<div className='container'>
-							<div className='card'>
+							<div className='card controls-container'>
 								<div className='card-content'>
 									<div className='field has-addons'>
 										<div className='control has-icons-right is-expanded'>
@@ -94,15 +91,17 @@ class App extends Component {
 						</div>
 					</div>
 				</section>
-				<section className='container'>
+				<section className='container card-container'>
 					<div className='columns is-desktop is-centered'>
 						{this.state.players.map((player, index) => {
 							return (<PlayerCard
 								id={player.id}
 								key={index}
 								onDeleteCard={this.onDeleteCard}
+								locked={player.locked}
 								name={player.name}
 								recipe={player.recipe}
+								solved={player.solved}
 							/>)
 						})}
 					</div>
