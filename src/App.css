@@ -3,10 +3,16 @@
 	border-radius: 4px;
 }
 
+// stupid bulma overrides
+html, body {
+	box-sizing: initial;
+	height: 100%;
+}
+
+body {
+	background: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
+}
+
 .app {
-	/* background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
-	background-blend-mode: multiply,multiply; */
-	background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
-	/* background-image: linear-gradient(60deg, #29323c 0%, #485563 100%); */
-	/* background-image: linear-gradient(-225deg, #231557 0%, #44107A 29%, #FF1361 67%, #FFF800 100%); */
+	box-sizing: border-box;
 }
