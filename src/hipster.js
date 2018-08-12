@@ -8,7 +8,7 @@ export function getHipsterTitle() {
 		title = title + ' ' + getRandomTerm(terms);
 		++wordCount
 	} while (wordCount < titleLength);
-	return title.toUpperCase();
+	return title.toLowerCase();
 }
 
 function getRandomTerm(terms) {

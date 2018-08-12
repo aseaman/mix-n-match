@@ -1,0 +1,59 @@
+.board-item {
+	margin: 5px 0;
+}
+
+.board-item-content {
+	word-wrap: normal;
+	position: relative;
+	padding: 20px;
+	border-radius: 4px;
+	font-size: 17px;
+	text-align: center;
+	cursor: pointer;
+	box-shadow: 0px 1px 3px 0 rgba(0,0,0,0.2);
+	margin: 5px;
+}
+
+.shading-full {
+	background: #ff9e2c;
+}
+
+.shading-half {
+	background: linear-gradient(
+		to right,
+		#ff9e2c 0%,
+		#ff932c 50%,
+		#ffffff 50%,
+		#ffffff 100%
+	)
+}
+
+.shading-third {
+	background: linear-gradient(
+		to right,
+		#ff9e2c 0%,
+		#ff932c 33%,
+		#ffffff 33%,
+		#ffffff 100%
+	)
+}
+
+.shading-quarter {
+	background: linear-gradient(
+		to right,
+		#ff9e2c 0%,
+		#ff932c 25%,
+		#ffffff 25%,
+		#ffffff 100%
+	)
+}
+
+.shading-twentieth {
+	background: linear-gradient(
+		to right,
+		#ff9e2c 0%,
+		#ff932c 20%,
+		#ffffff 20%,
+		#ffffff 100%
+	)
+}
