@@ -82,7 +82,9 @@ class PlayerCard extends Component {
 										<div className='board-item' key={ `${this.props.ingredient}-${ingredient.ingredient}` }>
 											<div className={this.getShadingClass(ingredient.amount)} data-ingredient={ingredient.ingredient} onClick={e => { this.onIngredientClick(e) }}>
 												{this.props.solved &&
-													<span>{ingredient.ingredient}</span>
+													<span>
+														<i className={ingredient.correct ? 'fas fa-check correct-icon' : 'fas fa-times wrong-icon'}></i> {ingredient.ingredient}
+													</span>
 												}
 											</div>
 										</div>
@@ -90,7 +92,10 @@ class PlayerCard extends Component {
 								})}
 							</div>
 							<div className='card-footer'>
-								<a className='is-danger card-footer-item' onClick={e => this.props.onDeleteCard(this.props.id, e)}>
+								<span className="card-footer-item">
+									{this.props.solvedTotal} of {this.props.recipe.ingredients.length} <i className="fas fa-check correct-icon"></i>
+								</span>
+								<a className='footer-delete card-footer-item' onClick={e => this.props.onDeleteCard(this.props.id, e)}>
 									<span className='icon is-medium'>
 										<i className='fas fa-skull'></i>
 									</span>

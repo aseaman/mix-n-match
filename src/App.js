@@ -31,7 +31,8 @@ class App extends Component {
 			locked: true,
 			name: this.state.name,
 			recipe: buildRecipe(),
-			solved: false
+			solved: false,
+			solvedTotal: 0
 		};
 
 		const playersRef = firebase.database().ref('players');
@@ -57,7 +58,8 @@ class App extends Component {
 					locked: players[playerId].locked,
 					name: players[playerId].name,
 					recipe: players[playerId].recipe,
-					solved: players[playerId].solved
+					solved: players[playerId].solved,
+					solvedTotal: players[playerId].solvedTotal || 0
 				});
 			}
 
@@ -102,6 +104,7 @@ class App extends Component {
 								name={player.name}
 								recipe={player.recipe}
 								solved={player.solved}
+								solvedTotal={player.solvedTotal}
 							/>)
 						})}
 					</div>

@@ -3,7 +3,7 @@
 	border-radius: 4px;
 }
 
-// stupid bulma overrides
+/* // stupid bulma overrides
 html, body {
 	box-sizing: initial;
 	height: 100%;
@@ -15,4 +15,10 @@ body {
 
 .app {
 	box-sizing: border-box;
+} */
+html {
+	background: linear-gradient(45deg,#8baaaa,#ae8b9c);
+	background-size: cover;
+	min-height: 100%;
+	overflow-y: auto !important;
 }
